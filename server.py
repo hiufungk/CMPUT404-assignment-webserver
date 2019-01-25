@@ -60,7 +60,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
                 file_requested = str((file_requested)) + "index.html"
             else:
                 if(os.path.isdir(file_requested)):
-                    header = "HTTP/1.1 {} {}\nContent-Type: {}\nLocation:{}\n\n".format(301, "Moved Permanently", "text/html",file_requested+"/")
+                    header = "HTTP/1.1 {} {}\nContent-Type: {}\nLocation:{}\n\n".format(301, "Moved Permanently", "text/html",tmp[1].decode()+"/")
                     all_content = header + "301 Moved Permanently"
                     self.request.sendall(all_content.encode())
                     return
